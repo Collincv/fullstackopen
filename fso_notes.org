@@ -1,0 +1,97 @@
+
+* 0.4
+#+BEGIN_SRC mermaid :file ./images/diagram.png
+  sequenceDiagram
+  participant browser
+  participant server
+
+  Note right of browser: the browser sends text note in payload
+
+  browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
+  activate server
+  note left of server: server adds payload to notes array
+  server-->>browser: Status 302 redirect
+  deactivate server
+
+  browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+  activate server
+  server-->>browser: the HTML document
+  deactivate server
+
+  browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+  activate server
+  server-->>browser: The CSS file
+  deactivate server
+
+  browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+  activate server
+  server-->>browser: The javascript file
+      deactivate server
+
+  note right of browser: the browser starts executing the javascript code
+
+  browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+  activate server
+  server-->>browser: The json file
+  deactivate server
+
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/diagram.png]]
+
+#+RESU`LTS:
+[[file:diagram.png]]
+
+* 0.5
+#+BEGIN_SRC mermaid :file ./images/spa_diagram.png
+  sequenceDiagram
+    participant browser
+    participant server
+      
+      browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+
+      activate server
+      server-->>browser: the HTML document
+      deactivate server
+
+      browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+      activate server
+      server-->>browser: the CSS file
+      deactivate server
+
+      browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+      activate server
+      server-->>browser: the javascript file
+      deactivate server
+
+      browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+      activate server
+      server-->>browser: the json file
+      deactivate server
+
+    
+      
+      
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/spa_diagram.png]]
+
+* 0.6
+#+BEGIN_SRC mermaid :file ./images/0.6_New_note_in_single_page_app.diagram.png
+  sequenceDiagram
+      participant browser
+      participant server
+
+      Note right of browser: the browswer sends the json payload
+      activate browser
+      browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+      deactivate browser
+
+      activate server
+      deactivate server
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/0.6_New_note_in_single_page_app.diagram.png]]
