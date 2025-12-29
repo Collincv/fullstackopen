@@ -23,6 +23,7 @@
 ** 1.d
   [[https://react.dev/learn][official React documentation]]
   [[https://egghead.io/courses/the-beginner-s-guide-to-react ][beginner guide to react]]
+  [[https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics][HTML Table basics]]
 * Exercises
 ** 0.4
 #+BEGIN_SRC mermaid :file ./images/diagram.png
