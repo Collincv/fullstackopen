@@ -1,11 +1,27 @@
 
 * Reference Material
 ** Vite
-  - start vite project
+- create new vite project
 #+BEGIN_SRC
-npm run dev
-#+END_SRC
 
+  - create the new project
+  npm create vite@latest
+
+  - install it at the location
+  cd part1
+  npm install
+
+#+END_SRC 
+- start vite project
+#+BEGIN_SRC
+
+ - npm run dev
+ - can wath it at localhost:5173
+
+ #+END_SRC
+** 1.d
+  [[https://react.dev/learn][official React documentation]]
+  [[https://egghead.io/courses/the-beginner-s-guide-to-react ][beginner guide to react]]
 * Exercises
 ** 0.4
 #+BEGIN_SRC mermaid :file ./images/diagram.png
@@ -243,6 +259,7 @@ export default App
 #+END_SRC
 
 * Notes
+** React is a JavaScript library
 ** 1.C - Component state, event handlers
 *** Component helper function
 - defining a function in another function in Javascript is common.  Not as common in languages like Java.
@@ -282,12 +299,38 @@ using setInterval to re-render it automatically every second
 
 
 
-
-
-
-
-
 [[file:./images/20251225_123031.png]]
 
 
+
 The counter variable is assigned the initial value of state, which is zero. The variable setCounter is assigned a function that will be used to modify the state.
+** 1.D - A more complex state, debugging React apps
+ - Complex state - multiple "pieces" of state.
+ - two consts for each beginning with useState(0)
+ - alternate, one piece of state with object with a property for each button.  (both property values  will need
+   to be updated on either click.).  Can update the state of the pieces that dont change with object spread.
+ - it is forbidden in React to mutate state directly
+ - Changing state has to always be done by setting the state to a new object
+ - Storing all of the state in a single state object is a bad choice for the left and right button example.
+ - Arrays (all clicks concatenated with 'R' or 'L') and displayed on the bottom
+ - state update in React happens asyncchronously,(button count example).  using updated value to set total and set new value for new state
+ - conditional rendering - movinv allClicks to history component
+ - Debugging - add debugger anywhere in code for browser to display in debugger mode.  Components tab. React extension
+ - Rules of Hooks - (*what is a hook specifically?* useState function must not be called from inside a loop, a conditional expression, or any place that is not a function defining a component.  rule ensures that hooks are always called in the same order).  It is defined inside a function body that defines a React component'
+ - Event Handling Revisited - Event handlers must always be a function or a reference to a function.  This is not the same as the value of a function call (e.g. console.log):
+   this (no):
+   [[file:./images/20251229_094645.png]]
+   vs this (yes):
+   [[file:./images/20251229_094705.png]]
+
+   or this (no):
+   [[file:./images/20251229_094820.png]]
+
+   vs this (yes):
+   [[file:./images/20251229_094838.png]]
+ - A function that returns a function
+   Functions returning functions can be utilized in defining generic functionality that can be customized with parameters. goes on about making functions that only have a single return command more compact.
+ - Passing Event Handlers to Child Components - talks about creating Button component and passing button label to button component - a child component
+ - Do Not Define Components Within Components
+* 
+
