@@ -23,6 +23,7 @@
 ** 1.d
   [[https://react.dev/learn][official React documentation]]
   [[https://egghead.io/courses/the-beginner-s-guide-to-react ][beginner guide to react]]
+  [[https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics][HTML Table basics]]
 * Exercises
 ** 0.4
 #+BEGIN_SRC mermaid :file ./images/diagram.png
@@ -333,5 +334,7 @@ The counter variable is assigned the initial value of state, which is zero. The 
    Functions returning functions can be utilized in defining generic functionality that can be customized with parameters. goes on about making functions that only have a single return command more compact.
  - Passing Event Handlers to Child Components - talks about creating Button component and passing button label to button component - a child component
  - Do Not Define Components Within Components
-* 
+** takeaways from assignments
+*** use Array spread when copying [...arr] and on Math.max(...arr)
+*  
 
