@@ -334,6 +334,9 @@ The counter variable is assigned the initial value of state, which is zero. The 
    Functions returning functions can be utilized in defining generic functionality that can be customized with parameters. goes on about making functions that only have a single return command more compact.
  - Passing Event Handlers to Child Components - talks about creating Button component and passing button label to button component - a child component
  - Do Not Define Components Within Components
+** 2.A - Rendering a collection, modules
+*** Use map on arrays to display list objects
+*** use destructuring for props on components to get what is needed
 ** takeaways from assignments
 *** use Array spread when copying [...arr] and on Math.max(...arr)
 *  
