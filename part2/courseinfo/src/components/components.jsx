@@ -22,7 +22,7 @@ const Content = (props) => {
     console.log(props)
     return (
 	<>
-	    {props.parts.map(prop => 
+	    {props.parts.map(prop =>                                                               //notice here that the call starts with object props.  This is because the argument is not {destructured}
 		<Part key = {prop.id} part = {prop.name} exercise_count = {prop.exercises} />)}
 	</>
   )

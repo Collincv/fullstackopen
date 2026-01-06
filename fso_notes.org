@@ -292,6 +292,7 @@ using setInterval to re-render it automatically every second
 - separating the event handlers into separate functions anyway:
   [[file:./images/20251225_175638.png]]
 
+  - event handlers must be a function () =>, not a function call that returns a valeue
 *** Passing state - to child components
 [[file:./images/20251225_182202.png]]
 
@@ -336,7 +337,12 @@ The counter variable is assigned the initial value of state, which is zero. The 
  - Do Not Define Components Within Components
 ** 2.A - Rendering a collection, modules
 *** Use map on arrays to display list objects
+- remember when using map that you have to first reference the argument ('props') before referencing the part, or else destructuring the argument {arg}
 *** use destructuring for props on components to get what is needed
+- wrap args of the component in {arg1, arg2 ...}, then can reference them directly in the body instead of having to first reference props object.
+** 2.B - Forms
+*** event as a parameter in a function can access values of that event through handleNotechange which can access the value through event.value on form.
+*** when item is added to an array it creates a new copy with the new item added to the end.  It doesnt mutate the existing array, because change in state established by a change in memory address.  new array = new memory address
 ** takeaways from assignments
 *** use Array spread when copying [...arr] and on Math.max(...arr)
 *  
