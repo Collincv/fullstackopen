@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "ESNext",
+    "target": "ESNext"
+  },
+  "include": ["src/**/*", "../../../../.emacs.d/backups/!Users!collinvardhanabhuti!fullstackopen!part2!phonebook!phonebook!src!main.jsx~"]
+}
