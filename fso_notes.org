@@ -20,6 +20,42 @@
 
  #+END_SRC
 - can delete App.css, index.css and assets directory
+** axios
+*** local
+- run npm install axios in project root
+- make below changes to add json db
+  #+BEGIN_SRC json :results output
+{
+  "name": "phonebook",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "server": "json-server -p 3001 db.json" ;; CHANGE HERE
+  },
+  "dependencies": {
+    "axios": "^1.13.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/react": "^19.2.5",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^5.1.1",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.5.0",
+    "json-server": "^1.0.0-beta.3",  ;; AND HERE
+    "vite": "^7.2.4"
+  }
+}
+#+END_SRC
 ** 1.d
   [[https://react.dev/learn][official React documentation]]
   [[https://egghead.io/courses/the-beginner-s-guide-to-react ][beginner guide to react]]
@@ -343,7 +379,43 @@ The counter variable is assigned the initial value of state, which is zero. The 
 ** 2.B - Forms
 *** event as a parameter in a function can access values of that event through handleNotechange which can access the value through event.value on form.
 *** when item is added to an array it creates a new copy with the new item added to the end.  It doesnt mutate the existing array, because change in state established by a change in memory address.  new array = new memory address
+** 2.C - Getting Data From the server
+*** example of getting data from db.json server
+#+BEGIN_SRC js :results output
+  const hook = ()  => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3001/notes')
+      .then(response => {
+        console.log('promise fulfilled')
+        setNotes(response.data)
+      })
+  }
+
+  useEffect(hook, [])
+#+END_SRC
 ** takeaways from assignments
 *** use Array spread when copying [...arr] and on Math.max(...arr)
-*  
 
+
+
+*  Random Scratchpad stuff.  Clear / organize this regularly!
+** Asynchronous callbacks from 2.C
+- helps with problems associated with blocking which is inherint due to JS single threaded nature
+- an example of blocking is when a part of the program takes a long time to run, everything else on the web page is frozen.  cant do anything else until it finishes running.  the commands, clicks etc are still read, but they wont execute until it finishes its current thing
+- Asynchronous handles this by below , through concurrency and the event loop. works bc runtime can only do one thing at a time, but the browser has access to other things outside of the runtime.  concurrency kicks in on other pieces of the browser:
+  [[file:./images/20260111_173800.png]]
+- event loop looks at the stack and looks at the tasks (callback queue).  Ifi the stack is empy, it takes the first thing of the queue, and pushes it onto the stack
+- set timeout 0
+- settimeout is not a guaranteed time to execution.  It is a minimum time to execution
+- callbacks - a function that another function calls, or an asynchronous callback
+- synchronous vs asynchronous - no set timeout vs set timeout:
+  [[file:./images/20260111_175526.png]]
+[[file:./images/20260111_175701.png]]
+- browser would like to repaint the screen as fast as its frame rate. constrained by what is going on in js.  cant render if there is code in the stack .  Render is like its own callback queue.  But it is given a higher priority than callbacks.  every 16 milliseconds, it queues a render, and whats for the stack to clear before it can do a render.
+- while its blocked with things on the stack, cant change things on the screen.  cant click things and see a response:
+  [[file:./images/20260111_180449.png]]
+- render given a chance between each element, bc queued up asynchronously and has higher priority than the callback queue.  so it can squeeze itself in:
+  [[file:./images/20260111_180609.png]]
+** installing of axios and json-server and parameters, json-server as a develpment dependancy vs axios as a runtime depandancy.  json-only used during development , testing etc.
+** hooks - useEffect, onClick etc
