@@ -1,0 +1,99 @@
+{
+  "notes": [
+    {
+      "id": "1",
+      "content": "HTML is easy",
+      "important": false
+    },
+    {
+      "id": "2",
+      "content": "Browser can execute only JavaScript",
+      "important": false
+    },
+    {
+      "id": "3",
+      "content": "GET and POST are the most important methods of HTTP protocol",
+      "important": false
+    },
+    {
+      "id": "4",
+      "content": "check this out",
+      "important": false
+    },
+    {
+      "id": "1591",
+      "content": "hopefully this has a new id",
+      "important": false
+    },
+    {
+      "id": "a46e",
+      "content": "uh oh multiple ids",
+      "important": false
+    },
+    {
+      "id": "e898",
+      "content": "a new one",
+      "important": false
+    },
+    {
+      "id": "2ac8",
+      "content": "and yet another",
+      "important": false
+    },
+    {
+      "id": "76ed",
+      "content": "this one returning header to console",
+      "important": false
+    },
+    {
+      "id": "4f32",
+      "content": "this one returning everything",
+      "important": false
+    },
+    {
+      "id": "7efc",
+      "content": "this one checking the network",
+      "important": false
+    },
+    {
+      "id": "e68a",
+      "content": "POST is used to create new resources",
+      "important": false
+    },
+    {
+      "id": "0477",
+      "content": "hmm, something is missing",
+      "important": false
+    },
+    {
+      "id": "ac87",
+      "content": "last check",
+      "important": false
+    },
+    {
+      "id": "0140",
+      "content": "lets see what this one does",
+      "important": false
+    },
+    {
+      "id": "d054",
+      "content": "ding dong",
+      "important": true
+    },
+    {
+      "id": "0751",
+      "content": "ring ding dong",
+      "important": true
+    },
+    {
+      "id": "8724",
+      "content": "ring a ding ding ding dong",
+      "important": true
+    },
+    {
+      "id": "3d37",
+      "content": "keep they heads ringing",
+      "important": true
+    }
+  ]
+}

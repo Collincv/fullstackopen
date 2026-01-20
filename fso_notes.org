@@ -23,6 +23,10 @@
 ** axios
 *** local
 - run npm install axios in project root
+- run this command to start the server
+  #+BEGIN_SRC json :results output
+npx json-server --port 3001 db.json
+#+END_SRC
 - make below changes to add json db
   #+BEGIN_SRC json :results output
 {
@@ -419,3 +423,5 @@ The counter variable is assigned the initial value of state, which is zero. The 
   [[file:./images/20260111_180609.png]]
 ** installing of axios and json-server and parameters, json-server as a develpment dependancy vs axios as a runtime depandancy.  json-only used during development , testing etc.
 ** hooks - useEffect, onClick etc
+** 2.D
+*** axios modifying records with axios.put, axios adding records with axios.post, axios retrieving all records with axios.get
