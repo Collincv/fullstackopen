@@ -4,5 +4,5 @@
     "module": "ESNext",
     "target": "ESNext"
   },
-  "include": ["src/**/*", "../../../../.emacs.d/backups/!Users!collinvardhanabhuti!fullstackopen!part2!phonebook!phonebook!src!main.jsx~"]
+  "include": ["src/**/*", "../../../../.emacs.d/backups/!Users!collinvardhanabhuti!fullstackopen!part2!phonebook!phonebook!src!main.jsx~", "../../../../.emacs.d/backups/!Users!collinvardhanabhuti!fullstackopen!part2!phonebook!phonebook!src!services!persons.js~"]
 }

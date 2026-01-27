@@ -24,9 +24,12 @@
 *** local
 - run npm install axios in project root
 - run this command to start the server
-  #+BEGIN_SRC json :results output
+
+    #+BEGIN_SRC json :results output
 npx json-server --port 3001 db.json
 #+END_SRC
+
+
 - make below changes to add json db
   #+BEGIN_SRC json :results output
 {
@@ -402,7 +405,6 @@ The counter variable is assigned the initial value of state, which is zero. The 
 *** use Array spread when copying [...arr] and on Math.max(...arr)
 
 
-
 *  Random Scratchpad stuff.  Clear / organize this regularly!
 ** Asynchronous callbacks from 2.C
 - helps with problems associated with blocking which is inherint due to JS single threaded nature
@@ -425,3 +427,12 @@ The counter variable is assigned the initial value of state, which is zero. The 
 ** hooks - useEffect, onClick etc
 ** 2.D
 *** axios modifying records with axios.put, axios adding records with axios.post, axios retrieving all records with axios.get
+** Exercise 2.D
+*** Getting Data from server
+[[file:./images/20260125_175840.png]]
+
+*** Posting note to server
+[[file:./images/20260125_174733.png]]
+
+*** Deleting from the server
+*** Mistakes and takeaways

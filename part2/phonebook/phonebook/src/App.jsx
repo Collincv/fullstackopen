@@ -3,6 +3,8 @@ import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
 import axios from 'axios'
+import personsService from './services/persons'
+
 
 
 const App = () => {
@@ -17,9 +19,14 @@ const App = () => {
       })
   }
 
-  useEffect(hook, [])
-
-  //    window.persons = persons
+  useEffect(() => {
+    personsService
+      .getAll()
+      .then(initialPersons => {
+        console.log(initialPersons)
+        setPersons(initialPersons)
+      })
+  }, [])
 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
@@ -36,10 +43,13 @@ const App = () => {
 
     persons.map(person => person.name).includes(personObject.name)
       ? alert(`${newName} is already in the phonebook`)
-      : setPersons(persons.concat(personObject))
-
-    setNewName('')
-    setNewNumber('')
+      : personsService
+      .create(personObject)
+      .then(newPerson => {
+        console.log(newPerson)
+        setPersons(persons.concat(newPerson))
+        setNewName('')
+        setNewNumber('')})
   }
 
   const handleNameChange = (event) => {
@@ -60,12 +70,21 @@ const App = () => {
       : setShowAll(false)
   }
 
-  
+  const handleDeleteClick = (id) => {
+    personsService
+      .remove(id)
+      .then(() => { setPersons(persons.filter(person => id !== person.id))
+                 console.log('person deleted')
+               })
+
+  }
+
   
 
-  return (
+    return (
     <div>
       <h1>Phonebook</h1>
+
       <Filter filter={filter} handler={handleFilterChange}/>
 
       <h2>Add New</h2>
@@ -80,6 +99,7 @@ const App = () => {
       <Persons showAll={showAll}
                persons={persons}
                filter={filter}
+               handleDeleteClick={handleDeleteClick}
       />
       
       {/*}      <div>debug: {newName}</div>
