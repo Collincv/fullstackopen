@@ -436,3 +436,9 @@ The counter variable is assigned the initial value of state, which is zero. The 
 
 *** Deleting from the server
 *** Mistakes and takeaways
+*** misc
+CRUD
+#+BEGIN_SRC js  :results output
+//  to find in an array
+  const person = persons.find(p => p.id === id)
+#+END_SRC

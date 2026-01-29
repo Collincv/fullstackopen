@@ -10,14 +10,6 @@ import personsService from './services/persons'
 const App = () => {
   const [persons, setPersons] = useState([])
 
-  const hook = () => {
-    axios
-      .get('http://localhost:3001/persons')
-      .then(response => {
-        console.log("check this out",response.data)
-        setPersons(response.data)
-      })
-  }
 
   useEffect(() => {
     personsService
@@ -42,7 +34,7 @@ const App = () => {
     }
 
     persons.map(person => person.name).includes(personObject.name)
-      ? alert(`${newName} is already in the phonebook`)
+      ? updatePerson(personObject)
       : personsService
       .create(personObject)
       .then(newPerson => {
@@ -52,7 +44,32 @@ const App = () => {
         setNewNumber('')})
   }
 
-  const handleNameChange = (event) => {
+  const updatePerson = (personObject) => {
+    const person = persons.find(p => p.name === personObject.name)
+    const id = person.id
+    console.log(id)
+
+    if (window.confirm(`${personObject.name} already exist.  Update number?`)) {
+      personsService
+        .update(id, personObject)
+        .then(() => {
+          setPersons(persons.map(person => 
+            person.id === id
+              ? { ...person, number: personObject.number }
+              : person
+          ))
+          console.log('updated person')
+        })
+    }
+
+     else console.log('update declined')
+    
+  }
+
+   
+ 
+
+   const handleNameChange = (event) => {
     console.log(event.target.value)
     setNewName(event.target.value)
   }
@@ -71,11 +88,14 @@ const App = () => {
   }
 
   const handleDeleteClick = (id) => {
-    personsService
-      .remove(id)
-      .then(() => { setPersons(persons.filter(person => id !== person.id))
-                 console.log('person deleted')
-               })
+    const person = persons.find(p => p.id === id)
+    const name = person.name
+    if (window.confirm(`Delete ${name}?`)) {
+      personsService
+        .remove(id)
+        .then(() => { setPersons(persons.filter(person => id !== person.id))
+                      console.log('person deleted')
+                    })} else console.log('deletion cancelled')
 
   }
 
@@ -111,8 +131,3 @@ const App = () => {
 
 export default App
 
-
-
-/*
-  create a separate component for Filter, PersonForm, and Persons 
-*/
