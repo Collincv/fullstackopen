@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import Filter from './components/Filter'
 import PersonForm from './components/PersonForm'
 import Persons from './components/Persons'
-import axios from 'axios'
 import personsService from './services/persons'
+import Notification from './components/Notification'
+
 
 
 
@@ -24,6 +25,8 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [showAll, setShowAll] = useState(true)
   const [filter, setFilter] = useState('')
+  const [updateMessage, setUpdateMessage] = useState(null)
+  const [errorMessage, setErrorMessage] = useState(null)
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -42,6 +45,12 @@ const App = () => {
         setPersons(persons.concat(newPerson))
         setNewName('')
         setNewNumber('')})
+      .then(() => {
+        setUpdateMessage(`${personObject.name} added`)
+        setTimeout(() => {
+          setUpdateMessage(null)
+        }, 2000)
+      })
   }
 
   const updatePerson = (personObject) => {
@@ -60,6 +69,19 @@ const App = () => {
           ))
           console.log('updated person')
         })
+        .then(() => {
+          setUpdateMessage(`${personObject.name} updated`)
+          setTimeout(() => {
+            setUpdateMessage(null)
+          }, 2000)
+        })
+        .catch(() => {
+          setErrorMessage(`${personObject.name} is not found in the server`)
+          setTimeout(() => {
+            setUpdateMessage(null)
+          }, 2000)
+        })
+
     }
 
      else console.log('update declined')
@@ -99,32 +121,33 @@ const App = () => {
 
   }
 
-  
+  const message = errorMessage || updateMessage
+  const messageType = errorMessage ? 'error' : 'update'
 
     return (
-    <div>
-      <h1>Phonebook</h1>
+      <div>
+        <h1>Phonebook</h1>
+        <Notification message={message} type={messageType}/>
+        <Filter filter={filter} handler={handleFilterChange}/>
+        
+        <h2>Add New</h2>
+        <PersonForm addPerson={addPerson}
+                    newName={newName}
+                    handleNameChange={handleNameChange}
+                    newNumber={newNumber}
+                    handleNumberChange={handleNumberChange}
+        />
 
-      <Filter filter={filter} handler={handleFilterChange}/>
-
-      <h2>Add New</h2>
-      <PersonForm addPerson={addPerson}
-                  newName={newName}
-                  handleNameChange={handleNameChange}
-                  newNumber={newNumber}
-                  handleNumberChange={handleNumberChange}
-      />
-
-      <h2>Numbers</h2>
-      <Persons showAll={showAll}
-               persons={persons}
-               filter={filter}
-               handleDeleteClick={handleDeleteClick}
-      />
-      
-      {/*}      <div>debug: {newName}</div>
-         <div>debug: {newNumber}</div> */}
-    </div>
+        <h2>Numbers</h2>
+        <Persons showAll={showAll}
+                 persons={persons}
+                 filter={filter}
+                 handleDeleteClick={handleDeleteClick}
+        />
+        
+        {/*}      <div>debug: {newName}</div>
+           <div>debug: {newNumber}</div> */}
+      </div>
 
   )
 }

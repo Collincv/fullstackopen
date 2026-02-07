@@ -428,6 +428,7 @@ The counter variable is assigned the initial value of state, which is zero. The 
 ** 2.D
 *** axios modifying records with axios.put, axios adding records with axios.post, axios retrieving all records with axios.get
 ** Exercise 2.D
+*** CRUD - Create, Read, Update, Delete
 *** Getting Data from server
 [[file:./images/20260125_175840.png]]
 
@@ -442,3 +443,7 @@ CRUD
 //  to find in an array
   const person = persons.find(p => p.id === id)
 #+END_SRC
+** Exercise 2.E
+*** REST - Representational state transfer
+**** Later in FSO you'll see patterns for keeping clients more synchronized in real-time (like WebSockets), but the basic model is: server holds truth, clients hold temporary working copies.
+**** Server data storage, Local machine running web app independently as a copy
