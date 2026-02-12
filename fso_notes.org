@@ -21,7 +21,7 @@
  #+END_SRC
 - can delete App.css, index.css and assets directory
 ** axios
-*** local
+*** locpal
 - run npm install axios in project root
 - run this command to start the server
 
@@ -63,6 +63,8 @@ npx json-server --port 3001 db.json
   }
 }
 #+END_SRC
+*** online
+
 ** 1.d
   [[https://react.dev/learn][official React documentation]]
   [[https://egghead.io/courses/the-beginner-s-guide-to-react ][beginner guide to react]]
@@ -447,3 +449,23 @@ CRUD
 *** REST - Representational state transfer
 **** Later in FSO you'll see patterns for keeping clients more synchronized in real-time (like WebSockets), but the basic model is: server holds truth, clients hold temporary working copies.
 **** Server data storage, Local machine running web app independently as a copy
+*** showing a list
+**** using map to show a list of items - map over array and for each element call to component that displays that item (e.g. ih phone book app, Persons maps over persons and calls Person component for each element which displays that person as a li)
+[[file:./images/20260208_082022.png]]
+[[file:./images/20260208_082056.png]]
+*** retrieving from axios
+**** to use axios to connect to data
+[[file:./images/20260208_090852.png]]
+**** setting up a services
+[[file:./images/20260208_091033.png]]
+*** useEffect
+**** example of useEffect
+[[file:./images/20260208_093721.png]]
+*** when using curly braces, must return something on things like map:
+[[file:./images/20260208_164352.png]]
+*** a component can only return one root element
+*** fragments to keep things on same line - <>..</>
+[[file:./images/20260208_220251.png]]
+*** useEffect with an argument that updates on change (e.g. Weather component)
+[[file:./images/20260210_221831.png]]
+*** errors on British Indian Ocean Territory, maybe because capital has a space in it?  or maybe because it is not in the directory
